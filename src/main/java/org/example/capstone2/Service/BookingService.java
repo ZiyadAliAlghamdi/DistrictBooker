@@ -176,6 +176,38 @@ public class BookingService {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @Scheduled(cron = "0 * * * * *")
     public void updateBookingStatus() {
         List<Booking> approvedBookings = bookingRepository.findBookingByStatus("approved");

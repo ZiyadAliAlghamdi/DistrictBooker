@@ -103,7 +103,7 @@ public class FeedbackService {
         feedbackRepository.save(feedback);
     }
 
-    //todo: using dto or something in the future
+    //todo: using something to handle in the future
     public void closeFeedback(Integer feedbackId, String message){
         Feedback feedback = feedbackRepository.getFeedBackById(feedbackId);
 

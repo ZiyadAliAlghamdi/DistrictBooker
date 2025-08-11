@@ -11,13 +11,13 @@ import java.util.List;
 public interface FacilityRepository extends JpaRepository<Facility, Integer>{
     Facility getFacilityById(Integer id);
 
-
     @Query("""
-     select f from Facility f
-     where f.id in :ids
-       and (:neighborhood is null or f.neighborhoodId = :neighborhoodId)
-     """)
+  select f from Facility f
+  where f.id in ?1
+    and (?2 is null or f.neighborhoodId = ?2)
+""")
     List<Facility> findByIdsWithFilter(List<Integer> ids, Integer neighborhoodId);
+
 
     @Query("select f from Facility f where f.neighborhoodId =?1")
     List<Facility> findFacilitiesByNeighborhood(Integer neighborhoodId);

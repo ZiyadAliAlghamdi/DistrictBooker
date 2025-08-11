@@ -48,7 +48,7 @@ public class Booking {
     @NotEmpty(message = "<booking-model> status cannot be empty")
     @Pattern(regexp = "^\\b(pending|approved|cancelled|done)\\b$", message = "<booking-model> status value is not valid")
     @Column(columnDefinition = "varchar(40) not null default 'pending' CHECK (status IN ('pending', 'approved', 'cancelled','done'))")
-    private String status;
+    private String status= "pending";
 
 
     @CreationTimestamp
