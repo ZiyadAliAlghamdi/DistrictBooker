@@ -28,20 +28,13 @@ public class RatingController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addRating(@RequestBody @Valid Rating rating, Errors errors){
-        if (errors.hasErrors()){
-            return ResponseEntity.status(400).body(errors.getFieldError().getDefaultMessage());
-        }
+    public ResponseEntity<?> addRating(@RequestBody @Valid Rating rating){
         ratingService.addRating(rating);
         return ResponseEntity.ok(new ApiResponse("<rating-controller/addRating> rating added"));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateRating(@PathVariable Integer id, @RequestBody @Valid Rating rating, Errors errors){
-        if (errors.hasErrors()){
-            return ResponseEntity.status(400).body(errors.getFieldError().getDefaultMessage());
-        }
-
+    public ResponseEntity<?> updateRating(@PathVariable Integer id, @RequestBody @Valid Rating rating){
         ratingService.updateRating(id,rating);
         return ResponseEntity.ok(new ApiResponse("<rating-controller/updateRating> rating updated"));
     }

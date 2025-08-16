@@ -26,19 +26,13 @@ public class NeighborhoodController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addNeighborhood(@RequestBody @Valid Neighborhood neighborhood, Errors errors){
-        if (errors.hasErrors()){
-            return ResponseEntity.status(400).body(errors.getFieldError().getDefaultMessage());
-        }
+    public ResponseEntity<?> addNeighborhood(@RequestBody @Valid Neighborhood neighborhood){
         neighborhoodService.addNeighborhood(neighborhood);
         return ResponseEntity.ok(new ApiResponse("<neighborhood-controller/addNeighborhood> Neighborhood added successfully"));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateNeighborhood(@PathVariable Integer id, @RequestBody @Valid Neighborhood neighborhood, Errors errors){
-        if (errors.hasErrors()){
-            return ResponseEntity.status(400).body(errors.getFieldError().getDefaultMessage());
-        }
+    public ResponseEntity<?> updateNeighborhood(@PathVariable Integer id, @RequestBody @Valid Neighborhood neighborhood){
         neighborhoodService.updateNeighborhood(id, neighborhood);
         return ResponseEntity.ok(new ApiResponse("<neighborhood-controller/updateNeighborhood> Neighborhood updated successfully"));
     }

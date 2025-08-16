@@ -26,20 +26,14 @@ public class AdminController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addAdmin(@RequestBody @Valid Admin admin, Errors errors){
-        if (errors.hasErrors()){
-            return ResponseEntity.status(400).body(errors.getFieldError().getDefaultMessage());
-        }
+    public ResponseEntity<?> addAdmin(@RequestBody @Valid Admin admin){
         adminService.addAdmin(admin);
         return ResponseEntity.ok(new ApiResponse("<admin-controller/addAdmin> admin added successfully"));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateAdmin(@PathVariable Integer id, @RequestBody @Valid Admin admin, Errors errors){
-        if (errors.hasErrors()){
-            return ResponseEntity.status(400).body(errors.getFieldError().getDefaultMessage());
-        }
-        adminService.updateAdmin(id, admin);
+    public ResponseEntity<?> updateAdmin(@PathVariable Integer id, @RequestBody @Valid Admin admin){
+         adminService.updateAdmin(id, admin);
         return ResponseEntity.ok(new ApiResponse("<admin-service/updateAdmin> admin updated successfully"));
     }
 

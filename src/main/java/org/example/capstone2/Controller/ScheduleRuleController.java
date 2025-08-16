@@ -30,23 +30,13 @@ public class ScheduleRuleController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addScheduleRule(@RequestBody @Valid ScheduleRule scheduleRule, Errors errors){
-
-        if (errors.hasErrors()){
-            return ResponseEntity.status(400).body(errors.getFieldError().getDefaultMessage());
-        }
-
+    public ResponseEntity<?> addScheduleRule(@RequestBody @Valid ScheduleRule scheduleRule){
         scheduleRuleService.addScheduleRule(scheduleRule);
         return ResponseEntity.ok(new ApiResponse("<scheduleRole-controller/addScheduleRule> scheduleRole added"));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateScheduleRule(@PathVariable Integer id, @RequestBody @Valid ScheduleRule scheduleRule, Errors errors){
-
-        if (errors.hasErrors()){
-            return ResponseEntity.status(400).body(errors.getFieldError().getDefaultMessage());
-        }
-
+    public ResponseEntity<?> updateScheduleRule(@PathVariable Integer id, @RequestBody @Valid ScheduleRule scheduleRule){
         scheduleRuleService.updateScheduleRule(id,scheduleRule);
         return ResponseEntity.ok(new ApiResponse("<scheduleRole-controller/updateScheduleRule> scheduleRole updated"));
     }

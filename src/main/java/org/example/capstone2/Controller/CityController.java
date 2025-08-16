@@ -26,19 +26,13 @@ public class CityController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> addCity(@RequestBody @Valid City city, Errors errors){
-        if (errors.hasErrors()){
-            return ResponseEntity.status(400).body(errors.getFieldError().getDefaultMessage());
-        }
+    public ResponseEntity<?> addCity(@RequestBody @Valid City city){
         cityService.addCity(city);
         return ResponseEntity.ok(new ApiResponse("<city-controller/addCity> City added successfully"));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateCity(@PathVariable Integer id, @RequestBody @Valid City city, Errors errors){
-        if (errors.hasErrors()){
-            return ResponseEntity.status(400).body(errors.getFieldError().getDefaultMessage());
-        }
+    public ResponseEntity<?> updateCity(@PathVariable Integer id, @RequestBody @Valid City city){
         cityService.updateCity(id, city);
         return ResponseEntity.ok(new ApiResponse("<city-controller/updateCity> City updated successfully"));
     }
